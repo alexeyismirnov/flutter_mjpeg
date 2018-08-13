@@ -8,3 +8,17 @@ This is just a proof-of-concept, rather than a full-fledged plugin. Pull request
 
 See the ```example``` for details.
 
+When you try this plugin in your own app, the compiler will complain about duplicate value in ```AndroidManifest.xml```. Add the following to ```<application>``` tag of your ```AndroidManifest.xml```:
+
+```
+   tools:replace="android:label"
+```
+
+and also this to the top-most ```<manifest>``` tag:
+
+```
+    xmlns:tools="http://schemas.android.com/tools"
+```
+
+
+
