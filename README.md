@@ -1,10 +1,8 @@
-# mjpeg
+# flutter-mjpeg
 
-A new flutter plugin project.
+This plugin provides MJPEG video streaming for Flutter. It uses [ipcam-view](https://github.com/niqdev/ipcam-view) library for Android part, and a custom implementation for iOS part.
 
 ## Getting Started
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+See the ```example``` for details.
 
-For help on editing plugin code, view the [documentation](https://flutter.io/platform-plugins/#edit-code).
