@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ironyun.mjpegexample">
+    package="com.ironyun.mjpegexample"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
 
     <!-- The INTERNET permission is required for development. Specifically,
          flutter needs it to communicate with the running application
@@ -13,6 +15,8 @@
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
     <application
+        tools:replace="android:label"
+
         android:name="io.flutter.app.FlutterApplication"
         android:label="mjpeg_example"
         android:icon="@mipmap/ic_launcher">
