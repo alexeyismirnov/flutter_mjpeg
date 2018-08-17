@@ -1,3 +1,7 @@
+## 0.0.3
+
+* Checking HTTP errors
+
 ## 0.0.1
 
-* TODO: Describe initial release.
+* Initial release

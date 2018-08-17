@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.github.niqdev.mjpeg.DisplayMode;
 import com.github.niqdev.mjpeg.Mjpeg;
 import com.github.niqdev.mjpeg.MjpegInputStream;
 import com.github.niqdev.mjpeg.MjpegView;
 
+import rx.Subscriber;
 import rx.functions.Action1;
 
 public class LiveViewActivity extends Activity {
@@ -31,13 +33,27 @@ public class LiveViewActivity extends Activity {
         setContentView(R.layout.mjpeg_layout);
         mjpegView = findViewById(R.id.mjpegViewDefault);
 
-        Mjpeg.newInstance().open(url).subscribe(new Action1<MjpegInputStream>() {
+
+        Mjpeg.newInstance().open(url).subscribe(new Subscriber<MjpegInputStream>() {
             @Override
-            public void call(MjpegInputStream s) {
-                mjpegView.setSource(s);
-                mjpegView.setDisplayMode(DisplayMode.BEST_FIT);
+            public void onCompleted() {
+                Log.d("MJPG", "subscribe completed");
 
             }
+
+            @Override
+            public void onError(Throwable throwable) {
+                Log.d("MJPG", "subscribe error");
+                Toast.makeText(LiveViewActivity.this, "Cannot open live view URL",
+                        Toast.LENGTH_LONG).show();
+            }
+
+            @Override
+            public void onNext(MjpegInputStream s) {
+                mjpegView.setSource(s);
+                mjpegView.setDisplayMode(DisplayMode.BEST_FIT);
+            }
+
         });
     }
 

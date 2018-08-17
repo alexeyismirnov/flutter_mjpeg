@@ -19,7 +19,7 @@ class _MyAppState extends State<MyApp> {
       body: Center(
         child: RaisedButton(
           onPressed: () {
-            Mjpeg.startLiveView(url: "http://172.16.15.212:9000/live-camera-6");
+            Mjpeg.startLiveView(url: "http://172.16.15.211:9000/live-camera-23");
           },
           child: const Text('Live view'),
         ),

@@ -38,8 +38,31 @@
     NSURLRequest *theRequest =
     [NSURLRequest requestWithURL:[NSURL URLWithString:self.url]];
     
-    NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+    NSHTTPURLResponse *response = nil;
+    NSError *error =nil;
+
+    NSData *data = [NSURLConnection sendSynchronousRequest:theRequest
+                                         returningResponse:&response
+                                                     error:&error];
     
+    if (error || [response statusCode] != 200 ) {
+        [self showError];
+        NSLog(@"error %@",response);
+        
+    } else {
+        NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
+
+    }
+    
+}
+
+-(void) showError {
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:@"Cannot open live view URL"
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 -(void) closeView:(UIButton*)sender {
@@ -73,8 +96,8 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
-    // The request has failed for some reason!
-    // Check the error var
+    NSLog(@"cannot open URL");
+    [self showError];
 }
 
 
