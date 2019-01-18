@@ -2,6 +2,9 @@
   package="com.ironyun.mjpeg">
 
     <application>
-        <activity android:name=".LiveViewActivity" />
+        <activity android:name=".LiveViewActivity"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale"
+            android:screenOrientation="sensor"
+            />
     </application>
 </manifest>

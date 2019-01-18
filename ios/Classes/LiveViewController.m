@@ -26,12 +26,7 @@
     
     self.navigationItem.leftBarButtonItem = flipButton;
     
-    CGRect rc = self.view.bounds;
-    
-    self.imageView = [[UIImageView alloc]initWithFrame:rc];
-    [self.imageView setContentMode:UIViewContentModeScaleAspectFit];
-    
-    [self.view addSubview:self.imageView];
+   [self createImageView];
     
     _responseData = [[NSMutableData alloc] init];
     
@@ -53,7 +48,25 @@
         NSURLConnection *theConnection=[[NSURLConnection alloc] initWithRequest:theRequest delegate:self];
 
     }
+
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(OrientationChange:) name:UIDeviceOrientationDidChangeNotification object:nil];
     
+}
+
+-(void)createImageView
+{
+    CGRect rc = self.view.bounds;
+
+    self.imageView = [[UIImageView alloc]initWithFrame:rc];
+    [self.imageView setContentMode:UIViewContentModeScaleAspectFit];
+
+    [self.view addSubview:self.imageView];
+}
+
+-(void)OrientationChange:(NSNotification*)notification
+{
+   if (self.imageView != nil) [self.imageView removeFromSuperview];
+   [self createImageView];
 }
 
 -(void) showError {

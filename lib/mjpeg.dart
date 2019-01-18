@@ -10,8 +10,7 @@ enum ImageSource2 {
 }
 
 class Mjpeg {
-  static const MethodChannel _channel =
-      const MethodChannel('mjpeg');
+  static const MethodChannel _channel = const MethodChannel('mjpeg');
 
   static Future<Null> startLiveView({String url}) async {
     await _channel.invokeMethod('liveView', {'url': url});
@@ -31,4 +30,7 @@ class Mjpeg {
     return path == null ? null : File(path);
   }
 
+  static Future<Null> forcePortrait() async {
+    await _channel.invokeMethod('forcePortrait', {});
+  }
 }

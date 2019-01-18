@@ -47,7 +47,10 @@ static const int SOURCE_GALLERY = 1;
       [self.root presentViewController:self.nav animated:true completion:nil];
       
       result(nil);
-      
+  } else if ([@"forcePortrait" isEqualToString:call.method]) {
+  [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationPortrait) forKey:@"orientation"];
+      result(nil);
+
   } else if ([@"pickVideo" isEqualToString:call.method]) {
       self.viewController =
       [UIApplication sharedApplication].delegate.window.rootViewController;
