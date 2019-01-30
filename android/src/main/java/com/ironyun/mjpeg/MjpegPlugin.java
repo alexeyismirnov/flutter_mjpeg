@@ -29,13 +29,16 @@ public class MjpegPlugin implements MethodCallHandler {
     if (call.method.equals("liveView")) {
       Log.d("MJPG", "onMethodCall " + call.method);
 
-        String url = call.argument("url");
+      String url = call.argument("url");
 
-        Intent intent = new Intent(activity, LiveViewActivity.class);
-        intent.putExtra("url", url);
+      Intent intent = new Intent(activity, LiveViewActivity.class);
+      intent.putExtra("url", url);
 
-        activity.startActivity(intent);
+      activity.startActivity(intent);
 
+      result.success(null);
+
+    } else if (call.method.equals("forcePortrait")) {
       result.success(null);
 
     } else {
