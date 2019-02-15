@@ -104,8 +104,6 @@ static const int SOURCE_GALLERY = 1;
     }
     
 - (void)showPhotoLibrary {
-    NSLog(@"qq2");
-    
     // No need to check if SourceType is available. It always is.
     _imagePickerController.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
     [self.viewController presentViewController:_imagePickerController animated:YES completion:nil];
