@@ -3,6 +3,7 @@ package com.ironyun.mjpeg;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
+import android.content.pm.ActivityInfo;
 
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
@@ -39,6 +40,11 @@ public class MjpegPlugin implements MethodCallHandler {
       result.success(null);
 
     } else if (call.method.equals("forcePortrait")) {
+      activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+      result.success(null);
+
+    } else if (call.method.equals("forceLandscape")) {
+      activity.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
       result.success(null);
 
     } else {

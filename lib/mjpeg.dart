@@ -33,4 +33,8 @@ class Mjpeg {
   static Future<Null> forcePortrait() async {
     await _channel.invokeMethod('forcePortrait', {});
   }
+
+  static Future<Null> forceLandscape() async {
+    await _channel.invokeMethod('forceLandscape', {});
+  }
 }
