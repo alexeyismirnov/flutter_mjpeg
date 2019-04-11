@@ -52,7 +52,7 @@ static const int SOURCE_GALLERY = 1;
       result(nil);
       
   } else if ([@"forceLandscape" isEqualToString:call.method]) {
-      [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationLandscapeLeft) forKey:@"orientation"];
+      [[UIDevice currentDevice] setValue:@(UIInterfaceOrientationLandscapeRight) forKey:@"orientation"];
       result(nil);
 
   } else if ([@"pickVideo" isEqualToString:call.method]) {
